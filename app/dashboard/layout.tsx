@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import Sidebar from '../ui/dashboard/sidebar/Sidebar'
 import Navbar from '../ui/dashboard/navbar/Navbar'
+import style from '../dashboard/dashboard.module.css'
 
 
 interface Props {
@@ -8,15 +9,17 @@ interface Props {
 }
 
 const DashboardLayout = ({children} : Props) => {
-  return (<>
-  <div>
+  return (
+  <div className={style.container}>
+  <div className={style.menu}>
     <Sidebar/>
   </div>
-  <div>
+  <div className={style.content}>
     <Navbar/>
     {children}
   </div>
-  </>   
+  </div>
+ 
   )
 }
 
