@@ -11,6 +11,7 @@ import {
   MdOutlineSearch,
   MdOutlineSettings,
   MdHelpCenter,
+  MdLogout,
 } from "react-icons/md";
 import MenuLink from "./MenuLink/MenuLink";
 import Image from "next/image";
@@ -98,6 +99,10 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
+      <button className={style.logout}>
+        <MdLogout/>
+        Logout
+      </button>
     </div>
   );
 };
