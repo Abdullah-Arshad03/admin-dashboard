@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import style from "./sidebar.module.css";
 import {
   MdSupervisedUserCircle,
@@ -16,7 +16,7 @@ import {
 import MenuLink from "./MenuLink/MenuLink";
 import Image from "next/image";
 
-const menuItems = [
+const menuItems : {title : string , list : {title : string , path : string , icon : ReactNode}[]}[]  = [
   {
     title: "Pages",
     list: [

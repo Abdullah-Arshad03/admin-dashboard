@@ -2,7 +2,7 @@ import React from 'react'
 import style from './dashboard.module.css'
 import Card from '../ui/dashboard/card/Card'
 import RightBar from '../ui/dashboard/rightbar/RightBar'
-import Transactions from '../ui/transactions/Transactions'
+import Transactions from '../ui/dashboard/transactions/Transactions'
 import Chart from '../ui/dashboard/chart/Chart'
 const Dashboard = () => {
   return (
