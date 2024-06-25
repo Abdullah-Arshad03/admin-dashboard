@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import Sidebar from '../ui/dashboard/sidebar/Sidebar'
 import Navbar from '../ui/dashboard/navbar/Navbar'
-import style from '../dashboard/dashboard.module.css'
+import style from './dashboard.module.css'
 
 
 interface Props {

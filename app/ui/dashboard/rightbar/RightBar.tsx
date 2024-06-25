@@ -1,8 +1,10 @@
 import React from 'react'
+import style from './rightbar.module.css'
+
 
 const RightBar = () => {
   return (
-    <div>RightBar</div>
+    <div className={style.container} >RightBar</div>
   )
 }
 

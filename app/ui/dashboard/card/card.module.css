@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    gap: 20px;
+    /* margin-right: 10px; */
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+
+
+}
+.container:hover{
+    background-color: #2e374a;
+}
+.texts{
+    display: flex;
+    flex-direction:  column;
+    gap: 20px;
+}
+.number{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.details{
+    font-size: 14px;
+    font-weight: 400;
+}
+.positive{
+    color: lime;
+}
+.negative{
+    color: red;
+}
