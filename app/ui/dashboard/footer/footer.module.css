@@ -1,0 +1,14 @@
+.container{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.name{
+    font-weight: bold;
+    font-size: 13px;
+}
+.footer{
+    font-weight: bold;
+    font-size: 13px;
+}

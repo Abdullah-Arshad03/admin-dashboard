@@ -4,8 +4,9 @@ import Card from '../ui/dashboard/card/Card'
 import RightBar from '../ui/dashboard/rightbar/RightBar'
 import Transactions from '../ui/dashboard/transactions/Transactions'
 import Chart from '../ui/dashboard/chart/Chart'
+
 const Dashboard = () => {
-  return (
+  return (<>
     <div className={style.wrapper}>
       <div className={style.main}>
 
@@ -31,6 +32,8 @@ const Dashboard = () => {
       </div>
 
     </div>
+
+    </>
   )
 }
 

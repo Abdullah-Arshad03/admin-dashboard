@@ -47,7 +47,7 @@ const RightBar = () => {
 
           <button className={style.button}>
             <MdPlayCircleFilled/>
-            Watch
+            Learn
           </button>
 
         </div>
