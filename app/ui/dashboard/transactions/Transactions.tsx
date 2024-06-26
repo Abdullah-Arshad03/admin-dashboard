@@ -85,7 +85,7 @@ const Transactions = () => {
                   {user.Status}
                 </span>
               </td>
-              <td>${user.Date}</td>
+              <td>{user.Date}</td>
               <td>${user.Amount}</td>
             </tr>
           ))}
