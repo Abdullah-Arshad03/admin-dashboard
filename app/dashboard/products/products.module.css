@@ -1,0 +1,40 @@
+.container{
+    background-color: var(--bgSoft);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+.table{
+    width: 100%;
+}
+.table td{
+    padding: 10px;
+}
+.prod{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.prodImage{
+    object-fit: cover;
+    border-radius: 50%;
+}
+.viewBtn{
+    border-radius: 5px;
+    background-color: teal;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+
+}
+.deleteBtn{
+    border-radius: 5px ;
+    background-color: crimson;
+    border: none;
+    padding: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+

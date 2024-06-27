@@ -3,6 +3,8 @@ import style from './users.module.css'
 import Search from '@/app/ui/dashboard/search/Search'
 import { Actions } from '@/app/utils/action'
 import Image from 'next/image'
+import Link from 'next/link'
+import Pagination from '../pagination/Pagination'
 
 
 
@@ -60,7 +62,7 @@ const UsersPage = () => {
           {usersTable.map((user) => (
             <tr key={user.Name}>
               <td>
-                {" "}
+              {" "}
                 <div className={style.user}>
                   {" "}
                   <Image
@@ -79,13 +81,13 @@ const UsersPage = () => {
               <td>{user.CreatedAt}</td>
               <td>{user.Role}</td>
               <td>{user.Action}</td>
-              <td><button className={style.viewBtn}>{user.viewBtn}</button></td>
+              <td> <Link href='/'> <button className={style.viewBtn}>{user.viewBtn}</button> </Link></td>
               <td><button className={style.deleteBtn}>{user.deleteBtn}</button></td>
             </tr>
           ))}
         </tbody>
       </table>
-        
+        <Pagination/>
 
       </div>
     </div>

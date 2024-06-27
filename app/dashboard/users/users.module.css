@@ -22,14 +22,19 @@
 }
 .viewBtn{
     border-radius: 5px;
-    background-color: lightgreen;
+    background-color: teal;
     padding: 6px;
     border: none;
+    cursor: pointer;
+
 }
 .deleteBtn{
     border-radius: 5px ;
-    background-color: red;
+    background-color: crimson;
     border: none;
     padding: 6px;
     color: white;
+    cursor: pointer;
 }
+
+

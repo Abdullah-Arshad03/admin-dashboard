@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+.previous{
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+}
+.next{
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+}
