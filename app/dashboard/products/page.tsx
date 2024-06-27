@@ -2,7 +2,7 @@ import React from 'react'
 import style from './products.module.css'
 import Search from '@/app/ui/dashboard/search/Search'
 import { Actions } from '@/app/utils/action'
-import Pagination from '../pagination/Pagination'
+import Pagination from '../../ui/dashboard/pagination/Pagination'
 import Image from 'next/image'
 import Link from 'next/link'
 

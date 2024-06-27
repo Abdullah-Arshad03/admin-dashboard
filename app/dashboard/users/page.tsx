@@ -4,7 +4,7 @@ import Search from '@/app/ui/dashboard/search/Search'
 import { Actions } from '@/app/utils/action'
 import Image from 'next/image'
 import Link from 'next/link'
-import Pagination from '../pagination/Pagination'
+import Pagination from '../../ui/dashboard/pagination/Pagination'
 
 
 
