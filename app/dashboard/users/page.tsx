@@ -47,7 +47,7 @@ const UsersPage = () => {
       <div className={style.search}>
         <Search placeholder='Search Users...'/>
         <div className={style.newUser}>
-          <Link href='/'> <button className={style.newUserBtn}>New User</button></Link>
+          <Link href='/'> <button className={style.newUserBtn}>Add New</button></Link>
         </div>
       </div>
       <div className={style.users}>

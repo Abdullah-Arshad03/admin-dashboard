@@ -46,12 +46,14 @@ const ProductsPage = () => {
       <div className={style.search}>
         <Search placeholder='Search Products...'/>
         <div className={style.newUser}>
-          <Link href='/'> <button className={style.newProdBtn}>Create</button></Link>
+          <Link href='/'> <button className={style.newProdBtn}>Add New</button></Link>
+   
         </div>
-      </div>
+      </div> 
       <div className={style.users}>
       <table className={style.table}>
         <thead>
+
           <tr>
             <td>Title</td>
             <td>Description</td>
