@@ -46,6 +46,9 @@ const UsersPage = () => {
     <div className={style.container}>
       <div className={style.search}>
         <Search placeholder='Search Users...'/>
+        <div className={style.newUser}>
+          <Link href='/'> <button className={style.newUserBtn}>New User</button></Link>
+        </div>
       </div>
       <div className={style.users}>
       <table className={style.table}>
