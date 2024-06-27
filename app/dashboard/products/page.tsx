@@ -46,7 +46,7 @@ const ProductsPage = () => {
       <div className={style.search}>
         <Search placeholder='Search Products...'/>
         <div className={style.newUser}>
-          <Link href='/'> <button className={style.newProdBtn}>Add New</button></Link>
+          <Link href='/dashboard/products/add'> <button className={style.newProdBtn}>Add New</button></Link>
    
         </div>
       </div> 

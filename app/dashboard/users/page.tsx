@@ -7,7 +7,6 @@ import Link from 'next/link'
 import Pagination from '../../ui/dashboard/pagination/Pagination'
 
 
-
 const usersTable : {
   Name : string , 
   Email : string , 
@@ -47,7 +46,7 @@ const UsersPage = () => {
       <div className={style.search}>
         <Search placeholder='Search Users...'/>
         <div className={style.newUser}>
-          <Link href='/'> <button className={style.newUserBtn}>Add New</button></Link>
+          <Link href='/dashboard/users/add'> <button className={style.newUserBtn}>Add New</button></Link>
         </div>
       </div>
       <div className={style.users}>

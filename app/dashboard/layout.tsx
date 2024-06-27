@@ -17,8 +17,6 @@ const DashboardLayout = ({children} : Props) => {
   <div className={style.content}>
     <Navbar/>
     {children}
-  
-
   </div>
   </div>
  
