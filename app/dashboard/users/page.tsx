@@ -5,7 +5,13 @@ import { Actions } from '@/app/utils/action'
 import Image from 'next/image'
 import Link from 'next/link'
 import Pagination from '../../ui/dashboard/pagination/Pagination'
+import { fetchUsers } from '@/app/lib/data'
 
+
+const Admin = 'admin'
+const client = 'client'
+const active = 'active'
+const nonActive = 'offline'
 
 const usersTable : {
   Name : string , 
@@ -40,7 +46,10 @@ const usersTable : {
 
   }
 ]
-const UsersPage = () => {
+const UsersPage = async () => {
+
+  const  userss = await fetchUsers()
+  console.log('these the fetched users ', userss)
   return (
     <div className={style.container}>
       <div className={style.search}>
@@ -61,30 +70,30 @@ const UsersPage = () => {
           </tr>
         </thead>
         <tbody>
-          {usersTable.map((user) => (
+          {userss.map((user) => (
             <tr key={user.Name}>
               <td>
               {" "}
                 <div className={style.user}>
                   {" "}
                   <Image
-                    src={user.image}
-                    alt={user.Name}
+                    src={user.img || '/noavatar.png'}
+                    alt={user.username}
                     width={40}
                     height={40}
                     className={style.userImage}
                   />{" "}
-                  {user.Name}{" "}
+                  {user.username}{" "}
                 </div>
               </td>
               <td>
-                {user.Email}
+                {user.email}
               </td>
-              <td>{user.CreatedAt}</td>
-              <td>{user.Role}</td>
-              <td>{user.Action}</td>
-              <td> <Link href='/'> <button className={style.viewBtn}>{user.viewBtn}</button> </Link></td>
-              <td><button className={style.deleteBtn}>{user.deleteBtn}</button></td>
+              <td>{user.createdAt?.toString().slice(4,16)}</td>
+              <td>{user.isAdmin? Admin : client}</td>
+              <td>{user.isActive? active : nonActive}</td>
+              <td> <Link href='/'> <button className={style.viewBtn}>view</button> </Link></td>
+              <td><button className={style.deleteBtn}>delete</button></td>
             </tr>
           ))}
         </tbody>
