@@ -24,13 +24,13 @@ const AddUserPage = () => {
 
         <select className={style.input} name="isAdmin" id="isAdmin">
           <option value="general">isAdmin?</option>
-          <option value="Admin">Yes</option>
-          <option value="notAdmin">No</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
         </select>
         <select className={style.input} name="isActive" id="isActive">
           <option value="general">isActive?</option>
-          <option value="Active">Yes</option>
-          <option value="notActive">No</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
         </select>
         <textarea  name="Address" id="Address" placeholder="Address" rows={16}  className={style.input}></textarea>
         <button type='submit' className={style.submit}>Submit</button>

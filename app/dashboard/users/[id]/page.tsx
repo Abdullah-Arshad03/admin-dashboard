@@ -31,7 +31,6 @@ const SingleUserPage = ({ params: { id } }: Props) => {
         <label>Address</label>
 
         <input  className={style.input}  type="text" placeholder="Address" name="Address" />
-
         <label>isAdmin?</label>
 
         <select  className={style.input}  name="isAdmin" id="isAdmin">
