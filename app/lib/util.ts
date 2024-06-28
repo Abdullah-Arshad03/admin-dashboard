@@ -12,7 +12,7 @@ export const connection = async () =>{
         console.log('db connected!')
         connected.isConnected = dbConnected.connections.values
         
-    } catch (error) {   
+    } catch (error) {
         console.log('this is the error ', error)
         // throw new Error(error)
     }  
