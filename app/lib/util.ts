@@ -11,7 +11,7 @@ export const connection = async () =>{
         // console.log('database is connected, dbConnected' , dbConnected)
         console.log('db connected!')
         connected.isConnected = dbConnected.connections.values
-        console.log('checking it ', dbConnected.connections.entries)
+        console.log('checking it ', dbConnected.connections[0].readyState)
         
     } catch (error) {
         console.log('this is the error ', error)

@@ -46,10 +46,18 @@ const usersTable : {
 
   }
 ]
-const UsersPage = async () => {
 
-  const  userss = await fetchUsers()
-  console.log('these the fetched users ', userss)
+
+interface Props {
+  searchParams : {
+    q : string
+  }
+}
+const UsersPage = async ({searchParams : {q}} : Props) => {
+// console.log(q)
+
+  const  userss = await fetchUsers(q)
+  // console.log('these the fetched users ', userss)
   return (
     <div className={style.container}>
       <div className={style.search}>
@@ -92,7 +100,7 @@ const UsersPage = async () => {
               <td>{user.createdAt?.toString().slice(4,16)}</td>
               <td>{user.isAdmin? Admin : client}</td>
               <td>{user.isActive? active : nonActive}</td>
-              <td> <Link href='/'> <button className={style.viewBtn}>view</button> </Link></td>
+              <td> <Link href={`/dashboard/users/${user._id}`}> <button className={style.viewBtn}>view</button> </Link></td>
               <td><button className={style.deleteBtn}>delete</button></td>
             </tr>
           ))}

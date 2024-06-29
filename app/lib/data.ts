@@ -2,11 +2,11 @@ import { User } from "./userModel"
 import { connection } from "./util"
  
 
-export const fetchUsers = async () =>{
+export const fetchUsers = async (q : string) =>{
 connection()
-
+ const regex = new RegExp(q , 'i')
     try {
-        const users = await User.find()
+        const users = await User.find({username : {$regex : regex}})
         if(!users){
             throw new Error('users not found')
         }

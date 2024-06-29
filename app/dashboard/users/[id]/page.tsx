@@ -1,13 +1,18 @@
 import React from "react";
 import style from "@/app/ui/dashboard/users/singleUser/singleUser.module.css";
 import Image from "next/image";
+import { User } from "@/app/lib/userModel";
 
 interface Props {
   params: {
     id: number;
   };
 }
-const SingleUserPage = ({ params: { id } }: Props) => {
+const SingleUserPage = async({ params: { id } }: Props) => {
+
+  const users = await User.findById(id)
+  console.log('users agaye', users)
+
   return (
     <div className={style.container}>
         <div className={style.infoContainer}>
