@@ -1,15 +1,34 @@
+'use client'
 import React from 'react'
 import style from './pagination.module.css'
+import { useSearchParams ,  useRouter , usePathname } from 'next/navigation'
 
-const pagination = () => {
+
+interface Props {
+  count : number
+}
+
+const Pagination = ( { count } : Props) => {
+
+  const pathname = usePathname()
+  const {replace} = useRouter()
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams)
+
+  const page  = params.get('page') || 1
+
+  const ITEMS_PER_PAGE = 2
+  const hasPrevious =  ITEMS_PER_PAGE * (Number(page) - 1) > 0
+  const hasNext = ITEMS_PER_PAGE * (Number(page) - 1) + ITEMS_PER_PAGE < count
+
   return (
     <div className={style.container}>
-      <button className={style.previous} disabled> Previous</button>
-      <button className={style.next}>Next</button>
+      <button className={style.previous} disabled={!hasPrevious}> Previous</button>
+      <button className={style.next} disabled={!hasNext}>Next</button>
 
 
     </div>
   )
 }
 
-export default pagination
+export default Pagination

@@ -50,14 +50,20 @@ const usersTable : {
 
 interface Props {
   searchParams : {
-    q : string
+    q : string, 
+    page : number
+
   }
 }
-const UsersPage = async ({searchParams : {q}} : Props) => {
-// console.log(q)
+const UsersPage = async ({searchParams : {q , page}} : Props) => {
 
-  const  userss = await fetchUsers(q)
-  // console.log('these the fetched users ', userss)
+
+const userss = await fetchUsers(q , page)
+
+const {count , users} = userss
+
+
+  
   return (
     <div className={style.container}>
       <div className={style.search}>
@@ -78,7 +84,7 @@ const UsersPage = async ({searchParams : {q}} : Props) => {
           </tr>
         </thead>
         <tbody>
-          {userss.map((user) => (
+          {users.map((user) => (
             <tr key={user.Name}>
               <td>
               {" "}
@@ -100,13 +106,15 @@ const UsersPage = async ({searchParams : {q}} : Props) => {
               <td>{user.createdAt?.toString().slice(4,16)}</td>
               <td>{user.isAdmin? Admin : client}</td>
               <td>{user.isActive? active : nonActive}</td>
+              <div className={style.btn}>
               <td> <Link href={`/dashboard/users/${user._id}`}> <button className={style.viewBtn}>view</button> </Link></td>
               <td><button className={style.deleteBtn}>delete</button></td>
+              </div>
             </tr>
           ))}
         </tbody>
       </table>
-        <Pagination/>
+        <Pagination count={count}/>
 
       </div>
     </div>

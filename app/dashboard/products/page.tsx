@@ -5,6 +5,7 @@ import { Actions } from '@/app/utils/action'
 import Pagination from '../../ui/dashboard/pagination/Pagination'
 import Image from 'next/image'
 import Link from 'next/link'
+import { fetchProducts } from '@/app/lib/data'
 
 const productsTable : {
   Title : string , 
@@ -40,7 +41,15 @@ const productsTable : {
   },
 ]
 
-const ProductsPage = () => {
+
+
+const ProductsPage = async() => {
+
+  
+  const prodData = await fetchProducts()
+
+  const {count , products} = prodData
+
   return (
     <div className={style.container}>
       <div className={style.search}>
@@ -62,36 +71,36 @@ const ProductsPage = () => {
           </tr>
         </thead>
         <tbody>
-          {productsTable.map((prod) => (
-            <tr key={prod.Title}>
+          {products.map((prod) => (
+            <tr key={prod.title}>
               <td>
               {" "}
                 <div className={style.prod}>
                   {" "}
                   <Image
-                    src={prod.image}
+                    src='/noavatar.png'
                     alt={prod.Title}
                     width={40}
                     height={40}
                     className={style.prodImage}
                   />{" "}
-                  {prod.Title}{" "}
+                  {prod.title}{" "}
                 </div>
               </td>
               <td>
-                {prod.Description}
+                {prod.description}
               </td>
-              <td>{prod.Price}</td>
-
-              <td>{prod.CreatedAt}</td>
-              <td>{prod.Stock}</td>
-              <td> <Link href='/'> <button className={style.viewBtn}>{prod.viewBtn}</button> </Link></td>
-              <td><button className={style.deleteBtn}>{prod.deleteBtn}</button></td>
+              <td>{prod.price}</td>
+              <td>{prod.stock}</td>
+              <div className={style.btns}>
+              <td> <Link href='/'> <button className={style.viewBtn}>view</button> </Link></td>
+              <td><button className={style.deleteBtn}>delete</button></td>
+              </div>
             </tr>
           ))}
         </tbody>
       </table>
-        <Pagination/>
+        <Pagination count={count}/>
 
       </div>
     </div>

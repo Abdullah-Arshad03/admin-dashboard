@@ -22,6 +22,8 @@ const Search = ({ placeholder }: Props) => {
 
   const searchHandler = (e : {target : {value : string}}) =>{
 
+    params.set('page', '1')
+
     if (e.target.value){
       params.set('q' , e.target.value)
     }
