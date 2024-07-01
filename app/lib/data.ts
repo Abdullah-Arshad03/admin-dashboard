@@ -37,13 +37,13 @@ interface FetchProducts {
     count : number , 
     products : Product[]
 }
-export const fetchProducts = async() : Promise<FetchProducts> =>{
+export const fetchProducts = async(q : string , page : number) : Promise<FetchProducts> =>{
 
-    // const regex = new RegExp(q , 'i')
+    const regex = new RegExp(q , 'i')
 
     try {
         const count = await Product.find().countDocuments()
-        const products = await Product.find()
+        const products = await Product.find({title : {$regex : regex}}).limit(2).skip(2 * page - 1)
         if(!products){
             throw new Error('products not found')
         }
@@ -56,3 +56,14 @@ export const fetchProducts = async() : Promise<FetchProducts> =>{
     
 }
 
+
+export const fetchSingleUser = async (id: number) =>{
+
+   try {
+        const user = await User.findById(id)
+
+   } catch (error) {
+    
+   }
+
+}

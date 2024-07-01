@@ -1,11 +1,11 @@
 import React from "react";
 import style from "@/app/ui/dashboard/users/addUser/addUser.module.css";
-
+import { addUser } from "@/app/lib/actions";
 
 const AddUserPage = () => {
   return (
     <div className={style.container}>
-      <form action="" className={style.form}>
+      <form action={addUser} className={style.form}>
         <input className={style.input}
           type="text"
           placeholder="username"
@@ -32,7 +32,7 @@ const AddUserPage = () => {
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
-        <textarea  name="Address" id="Address" placeholder="Address" rows={16}  className={style.input}></textarea>
+        <textarea  name="address" id="address" placeholder="Address" rows={16}  className={style.input}></textarea>
         <button type='submit' className={style.submit}>Submit</button>
       </form>
     </div>

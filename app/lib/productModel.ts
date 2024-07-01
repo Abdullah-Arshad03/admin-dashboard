@@ -17,7 +17,10 @@ const prodModel = new mongoose.Schema({
     }, 
     size : {
         type : Number,
-        required : true
+        // required : true
+    },
+    img: {
+        type : String
     },
     stock : {
         type : Number , 

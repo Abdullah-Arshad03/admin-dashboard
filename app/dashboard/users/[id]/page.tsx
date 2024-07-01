@@ -10,8 +10,8 @@ interface Props {
 }
 const SingleUserPage = async({ params: { id } }: Props) => {
 
-  const users = await User.findById(id)
-  console.log('users agaye', users)
+  const user = await User.findById(id)
+  console.log('users agaye', user)
 
   return (
     <div className={style.container}>
@@ -25,7 +25,7 @@ const SingleUserPage = async({ params: { id } }: Props) => {
       <div className={style.userInfo}>
         <form className={style.form}>
         <label>Username</label>
-        <input className={style.input} type="text" placeholder="Username" name="username" />
+        <input className={style.input} type="text" placeholder="Username" name="username" value={users} />
         <label>Email</label>
         <input  className={style.input}  type="Email" placeholder="Email" name="Email" />
         <label>Password</label>

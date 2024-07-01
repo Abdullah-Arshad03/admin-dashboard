@@ -62,8 +62,6 @@ const userss = await fetchUsers(q , page)
 
 const {count , users} = userss
 
-
-  
   return (
     <div className={style.container}>
       <div className={style.search}>
@@ -115,7 +113,6 @@ const {count , users} = userss
         </tbody>
       </table>
         <Pagination count={count}/>
-
       </div>
     </div>
   )

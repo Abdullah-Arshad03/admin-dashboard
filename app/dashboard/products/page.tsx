@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { fetchProducts } from '@/app/lib/data'
 
+
 const productsTable : {
   Title : string , 
   Description : string, 
@@ -42,12 +43,15 @@ const productsTable : {
 ]
 
 
-
-const ProductsPage = async() => {
-
+interface Props {
+  searchParams : {
+    q : string,
+    page : number
+  }
+}
+const ProductsPage = async({searchParams: {q , page}} : Props) => {
   
-  const prodData = await fetchProducts()
-
+  const prodData = await fetchProducts(q , page)
   const {count , products} = prodData
 
   return (
@@ -78,8 +82,8 @@ const ProductsPage = async() => {
                 <div className={style.prod}>
                   {" "}
                   <Image
-                    src='/noavatar.png'
-                    alt={prod.Title}
+                    src={prod.img || '/noavatar.png'}
+                    alt={prod.title}
                     width={40}
                     height={40}
                     className={style.prodImage}
@@ -93,7 +97,7 @@ const ProductsPage = async() => {
               <td>{prod.price}</td>
               <td>{prod.stock}</td>
               <div className={style.btns}>
-              <td> <Link href='/'> <button className={style.viewBtn}>view</button> </Link></td>
+              <td> <Link href={`/dashboard/products/${prod._id}`}> <button className={style.viewBtn}>view</button> </Link></td>
               <td><button className={style.deleteBtn}>delete</button></td>
               </div>
             </tr>
