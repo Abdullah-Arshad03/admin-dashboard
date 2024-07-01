@@ -57,13 +57,21 @@ export const fetchProducts = async(q : string , page : number) : Promise<FetchPr
 }
 
 
-export const fetchSingleUser = async (id: number) =>{
+export const fetchSingleUser = async (id: number):Promise<User> =>{
 
    try {
         const user = await User.findById(id)
 
+        if (!user){
+          const error =  new Error('user not founds')
+          throw error
+        }
+
+        return user
+
    } catch (error) {
-    
+    console.log('single user cant be fetched : ', error)
+    throw error
    }
 
 }
