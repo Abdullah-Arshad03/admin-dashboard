@@ -1,6 +1,8 @@
 import React from "react";
 import style from "@/app/ui/dashboard/products/singleProduct/singleProduct.module.css";
 import Image from "next/image";
+import { Product } from "@/app/lib/productModel";
+import { updateProd } from "@/app/lib/actions";
 
 interface Props {
   params: {
@@ -8,42 +10,55 @@ interface Props {
   };
 }
 
-const SingleProductPage = ({ params: { id } }: Props) => {
+const SingleProductPage = async({ params: { id } }: Props) => {
+
+    const product = await Product.findById(id)
+
+    if(!product) {
+      throw new Error ('product not found')
+    }
+
+
+
+
+
   return (
     <div className={style.container}>
       <div className={style.infoContainer}>
         <div className={style.imgContainer}>
-          <Image src="/noavatar.png" alt="userImage" fill></Image>
+          <Image src={product.img || '/noavatar.png'} alt="userImage" fill></Image>
         </div>
-        Abdullah
-      </div>
+        {product.title}
+      </div> 
 
-      <div className={style.userInfo}>
-        <form className={style.form}>
+      <div  className={style.userInfo}>
+        <form action={updateProd} className={style.form}>
+        <input type="hidden" name='id' value={product._id} />
           <label>Title</label>
           <input
             className={style.input}
             type="text"
-            placeholder="Title"
-            name="Title"
+
+            placeholder={product.title}
+            name="title"
           />
           <label>Price</label>
           <input
             className={style.input}
             type="number"
-            placeholder="Price"
-            name="Price"
+            placeholder={product.price}
+            name="price"
           />
           <label>Color</label>
           <input
             className={style.input}
             type="text"
-            placeholder="Color"
-            name="Color"
+            placeholder={product.color}
+            name="color"
           />
           <label>Choose a category</label>
 
-          <select className={style.input} name="cat" id="category">
+          <select className={style.input} name="category" id="category">
           <option value="general">Select one</option>
 
             <option value="kitchen">kitchen</option>
@@ -54,24 +69,24 @@ const SingleProductPage = ({ params: { id } }: Props) => {
           <input
             className={style.input}
             type="number"
-            placeholder="Stock"
-            name="Stock"
+            placeholder={product.stock}
+            name="stock"
           />
           <label>Size</label>
 
           <input
             className={style.input}
             type="text"
-            placeholder="Size"
-            name="Size"
+            placeholder={product.size}
+            name="size"
           />
              <label>Description</label>
 
 <input
   className={style.input}
   type="text"
-  placeholder="Description"
-  name="Description"
+  placeholder={product.description}
+  name="description"
 />
 
          
