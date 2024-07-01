@@ -4,9 +4,12 @@ import { userSchemaValidation } from "@/app/schemaValidation";
 import { User } from "@/app/lib/userModel";
 import * as bcrypt from 'bcrypt'
 import { connection } from "@/app/lib/util";
+import { getServerSession } from "next-auth";
 
 
 export async function POST(request : NextRequest){
+    
+    console.log('this is teh server session ', getServerSession)
  
     try {
     connection()
