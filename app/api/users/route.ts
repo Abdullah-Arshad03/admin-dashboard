@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import {z} from 'zod'
 import { userSchemaValidation } from "@/app/schemaValidation";
 import { User } from "@/app/lib/userModel";
 import * as bcrypt from 'bcrypt'

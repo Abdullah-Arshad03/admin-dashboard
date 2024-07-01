@@ -10,35 +10,33 @@ interface Props {
   };
 }
 
-const SingleProductPage = async({ params: { id } }: Props) => {
+const SingleProductPage = async ({ params: { id } }: Props) => {
+  const product = await Product.findById(id);
 
-    const product = await Product.findById(id)
-
-    if(!product) {
-      throw new Error ('product not found')
-    }
-
-
-
-
+  if (!product) {
+    throw new Error("product not found");
+  }
 
   return (
     <div className={style.container}>
       <div className={style.infoContainer}>
         <div className={style.imgContainer}>
-          <Image src={product.img || '/noavatar.png'} alt="userImage" fill></Image>
+          <Image
+            src={product.img || "/noavatar.png"}
+            alt="userImage"
+            fill
+          ></Image>
         </div>
         {product.title}
-      </div> 
+      </div>
 
-      <div  className={style.userInfo}>
+      <div className={style.userInfo}>
         <form action={updateProd} className={style.form}>
-        <input type="hidden" name='id' value={product._id} />
+          <input type="hidden" name="id" value={product._id} />
           <label>Title</label>
           <input
             className={style.input}
             type="text"
-
             placeholder={product.title}
             name="title"
           />
@@ -59,7 +57,7 @@ const SingleProductPage = async({ params: { id } }: Props) => {
           <label>Choose a category</label>
 
           <select className={style.input} name="category" id="category">
-          <option value="general">Select one</option>
+            <option value="general">Select one</option>
 
             <option value="kitchen">kitchen</option>
             <option value="phone">Phone</option>
@@ -80,16 +78,15 @@ const SingleProductPage = async({ params: { id } }: Props) => {
             placeholder={product.size}
             name="size"
           />
-             <label>Description</label>
+          <label>Description</label>
 
-<input
-  className={style.input}
-  type="text"
-  placeholder={product.description}
-  name="description"
-/>
+          <input
+            className={style.input}
+            type="text"
+            placeholder={product.description}
+            name="description"
+          />
 
-         
           <button type="submit" className={style.submit}>
             Submit
           </button>
