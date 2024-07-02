@@ -7,23 +7,32 @@ import { redirect } from "next/navigation";
 import * as bcrypt from "bcrypt";
 import { Product } from "./productModel";
 
-export const addUser = async (formData: User[]): Promise<void> => {
-  const { username, email, password, phone, address, isAdmin, isActive } =
-    Object.fromEntries(formData);
+
+
+export const addUser = async (formData: FormData): Promise<void> => {
+ const userInfo = {
+  username : formData.get('username'),
+  email : formData.get('email'),
+  password : formData.get('password'),
+  phone : formData.get('phone'),
+  address : formData.get('address'),
+  isAdmin : formData.get('isAdmin'),
+  isActive : formData.get('isActive')
+ }
 
   try {
-    connection();
+    await connection();
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(userInfo.password, salt);
     const users = await User.create({
-      username: username,
-      email: email,
+      username: userInfo.username,
+      email: userInfo.email,
       password: hashedPassword,
-      phone: phone,
-      address: address,
-      isAdmin: isAdmin,
-      isActive: isActive,
+      phone: userInfo.phone,
+      address: userInfo.address,
+      isAdmin: userInfo.isAdmin,
+      isActive: userInfo.isActive,
     });
 
     await users.save();
@@ -36,7 +45,7 @@ export const addUser = async (formData: User[]): Promise<void> => {
   redirect("/dashboard/users");
 };
 
-export const addProduct = async (formData: Product[]): Promise<void> => {
+export const addProduct = async (formData: FormData): Promise<void> => {
   const { title, price, color, category, stock, size, description } =
     Object.fromEntries(formData);
 
@@ -62,15 +71,7 @@ export const addProduct = async (formData: Product[]): Promise<void> => {
   redirect("/dashboard/products");
 };
 
-interface formData {
-  username: string;
-  email: string;
-  password: string;
-  phone: number;
-  address: string;
-  isAdmin: boolean;
-  isActive: boolean;
-}
+
 export const updateUser = async (formData: FormData): Promise<void> => {
   const { id, username, email, password, phone, address, isAdmin, isActive } =
     Object.fromEntries(formData);
@@ -93,7 +94,7 @@ export const updateUser = async (formData: FormData): Promise<void> => {
     });
 
     if (!id) {
-      throw new Error("User ID is required");
+      throw new Error("User ID  required");
     }
 
     await User.findByIdAndUpdate(id, updatedFields);
@@ -105,17 +106,7 @@ export const updateUser = async (formData: FormData): Promise<void> => {
   redirect(`/dashboard/users/`);
 };
 
-interface prodFormData {
-  title: string;
-  price: number;
-  color: string;
-  category: string;
-  stock: number;
-  size: number;
-  description: string;
-}
-
-export const updateProd = async (formData: prodFormData): Promise<void> => {
+export const updateProd = async (formData: FormData): Promise<void> => {
   const { id, title, price, color, category, stock, size, description } =
     Object.fromEntries(formData);
 

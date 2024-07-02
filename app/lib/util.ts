@@ -7,8 +7,7 @@ export const connection = async () =>{
 
     try {
         if (connected.isConnected) return 
-        const dbConnected = await mongoose.connect('mongodb+srv://abdullahharshad003:Rk7zrSAdEwaXkYRE@cluster0.ivoc2ea.mongodb.net/dashboard-db')
-        // console.log('database is connected, dbConnected' , dbConnected)
+        const dbConnected = await mongoose.connect(process.env.MONGODB_URI)
         console.log('db connected!')
         connected.isConnected = dbConnected.connections[0].readyState
         console.log('checking it ', dbConnected.connections[0].readyState)

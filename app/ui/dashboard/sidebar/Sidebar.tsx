@@ -17,6 +17,8 @@ import MenuLink from "./MenuLink/MenuLink";
 import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Link from "next/link";
+
 
 const menuItems : {title : string , list : {title : string , path : string , icon : ReactNode}[]}[]  = [
   {
@@ -82,15 +84,18 @@ const menuItems : {title : string , list : {title : string , path : string , ico
 ];
 
 const Sidebar = async() => {
+
+  
   const session = await getServerSession(authOptions)
+  console.log('this is the session in the dashboard page', session)
 
   return (
     <div className={style.container}>
       <div className={style.user}>
-        <Image className={style.userImage} src="/noavatar.png" alt="" width="50" height="50"></Image>
+        <Image className={style.userImage} src={session?.user?.image || '/noavatar.png'} alt="" width="50" height="50"></Image>
         <div className={style.userDetail}>
 
-       {session &&      <span className={style.username}>  {session.user?.name}</span> }
+       {session &&      <span className={style.username}>  {session.user?.name || session.user.email} </span> }
        {!session &&      <span className={style.username}>No User</span> }
 
 
@@ -110,7 +115,7 @@ const Sidebar = async() => {
       </ul>
       <button className={style.logout}>
         <MdLogout/>
-        Logout
+      {session && <Link href='/api/auth/signout'>Logout</Link>}
       </button>
     </div>
   );

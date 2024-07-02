@@ -83,7 +83,7 @@ const {count , users} = userss
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.Name}>
+            <tr key={user.username}>
               <td>
               {" "}
                 <div className={style.user}>

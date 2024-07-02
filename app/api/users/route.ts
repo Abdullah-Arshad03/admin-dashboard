@@ -13,11 +13,7 @@ import { getServerSession } from "next-auth";
 
 export async function POST(request : NextRequest){
     const session = await getServerSession()
-    if(!session){
-        return NextResponse.json({
-          message : 'unauthorized'
-        }, {status : 401})
-    }
+
     console.log('this is teh server session ', session?.user?.email , session?.user?.name)
 
  

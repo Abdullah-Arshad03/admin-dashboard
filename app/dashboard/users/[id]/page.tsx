@@ -4,6 +4,7 @@ import Image from "next/image";
 import { User } from "@/app/lib/userModel";
 import { fetchSingleUser } from "@/app/lib/data";
 import { updateUser } from "@/app/lib/actions";
+import { UserShape } from "@/app/utils/userInterface";
 
 interface Props {
   params: {
@@ -11,21 +12,11 @@ interface Props {
   };
 }
 
-interface User {
-  _id : number,
-  username : string,
-  email : string,
-  password : string , 
-  phone : number,
-  address : string, 
-  isAdmin : boolean,
-  isActive : boolean,
 
-}
 const SingleUserPage = async({ params: { id } }: Props) => {
 
-  const user: User = await fetchSingleUser(id)
-  console.log('user agaya : ', user)
+  const user : UserShape = await fetchSingleUser(id)
+  console.log('user agaya : ', User)
 
   return (
     <div className={style.container}>

@@ -1,9 +1,11 @@
 import { User } from "./userModel";
 import { connection } from "./util";
 import { Product } from "./productModel";
+import { ProductShape } from "../utils/productInterface";
+import { UserShape } from "../utils/userInterface";
 interface FetchedUsers {
   count: number;
-  users: User[];
+  users: UserShape[];
 }
 
 export const fetchUsers = async (
@@ -35,7 +37,7 @@ export const fetchUsers = async (
 
 interface FetchProducts {
     count : number , 
-    products : Product[]
+    products : ProductShape[]
 }
 export const fetchProducts = async(q : string , page : number) : Promise<FetchProducts> =>{
 
@@ -57,7 +59,7 @@ export const fetchProducts = async(q : string , page : number) : Promise<FetchPr
 }
 
 
-export const fetchSingleUser = async (id: number):Promise<User> =>{
+export const fetchSingleUser = async (id: number):Promise<UserShape> =>{
 
    try {
         const user = await User.findById(id)

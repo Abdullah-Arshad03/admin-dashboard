@@ -12,8 +12,7 @@ const TestPage = () => {
     phone : 1234,
     address : "lol 12345 lasdjkfkljflsjfdljflskjdf",
     isAdmin :false,
-    isActive : true
-    
+    isActive : true    
  })
 
  console.log('This is test response' , res)

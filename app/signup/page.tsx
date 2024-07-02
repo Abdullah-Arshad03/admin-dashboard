@@ -1,13 +1,11 @@
-import React from "react";
-import style from "@/app/ui/dashboard/users/addUser/addUser.module.css";
-import { addUser } from "@/app/lib/actions";
+import React from 'react'
+import style from '@/app/ui/dashboard/users/addUser/addUser.module.css'
 
-
-
-const AddUserPage = () => {
+const SignUpPage = () => {
   return (
-    <div className={style.container}>
-      <form action={addUser} className={style.form}>
+    <>
+
+<form  className={style.form}>
         <input className={style.input}
           type="text"
           placeholder="username"
@@ -34,11 +32,12 @@ const AddUserPage = () => {
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
-        <textarea  name="address" id="address" placeholder="Address" rows={16}  className={style.input}></textarea>
+        <input name="address" id="address" placeholder="Address"   className={style.input}></input>
         <button type='submit' className={style.submit}>Submit</button>
       </form>
-    </div>
-  );
-};
 
-export default AddUserPage;
+    </>
+  )
+}
+
+export default SignUpPage
