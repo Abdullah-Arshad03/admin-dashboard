@@ -15,6 +15,8 @@ import {
 } from "react-icons/md";
 import MenuLink from "./MenuLink/MenuLink";
 import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const menuItems : {title : string , list : {title : string , path : string , icon : ReactNode}[]}[]  = [
   {
@@ -79,13 +81,20 @@ const menuItems : {title : string , list : {title : string , path : string , ico
   },
 ];
 
-const Sidebar = () => {
+const Sidebar = async() => {
+  const session = await getServerSession(authOptions)
+
   return (
     <div className={style.container}>
       <div className={style.user}>
         <Image className={style.userImage} src="/noavatar.png" alt="" width="50" height="50"></Image>
         <div className={style.userDetail}>
-        <span className={style.username}>Abdullah </span>
+
+       {session &&      <span className={style.username}>  {session.user?.name}</span> }
+       {!session &&      <span className={style.username}>No User</span> }
+
+
+   
         <span className={style.userTitle}>Administrator</span>
       </div>
     </div>

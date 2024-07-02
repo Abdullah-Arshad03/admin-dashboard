@@ -4,15 +4,26 @@ import { userSchemaValidation } from "@/app/schemaValidation";
 import { User } from "@/app/lib/userModel";
 import * as bcrypt from 'bcrypt'
 import { connection } from "@/app/lib/util";
+// import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
+
 import { getServerSession } from "next-auth";
 
 
+
 export async function POST(request : NextRequest){
-    
-    console.log('this is teh server session ', getServerSession)
+    const session = await getServerSession()
+    if(!session){
+        return NextResponse.json({
+          message : 'unauthorized'
+        }, {status : 401})
+    }
+    console.log('this is teh server session ', session?.user?.email , session?.user?.name)
+
  
     try {
     connection()
+   
 
         const body= await request.json()
 
@@ -44,8 +55,8 @@ export async function POST(request : NextRequest){
         })
    
         const userCreated =  await user.save()
-
         return NextResponse.json(userCreated, {status : 200})
+
     } catch (error) {
        console.log('error')
     }

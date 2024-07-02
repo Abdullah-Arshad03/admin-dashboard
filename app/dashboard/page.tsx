@@ -4,6 +4,9 @@ import Card from '../ui/dashboard/card/Card'
 import RightBar from '../ui/dashboard/rightbar/RightBar'
 import Transactions from '../ui/dashboard/transactions/Transactions'
 import Chart from '../ui/dashboard/chart/Chart'
+// import { AuthOptions } from 'next-auth'
+import { authOptions } from '../api/auth/[...nextauth]/route'
+
 
 const Dashboard = () => {
   return (<>
