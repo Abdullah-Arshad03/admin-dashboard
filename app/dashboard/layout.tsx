@@ -12,7 +12,7 @@ const DashboardLayout = ({children} : Props) => {
   return (
   <div className={style.container}>
   <div className={style.menu}>
-    <Sidebar/>
+    <Sidbar/>
   </div>
   <div className={style.content}>
     <Navbar/>

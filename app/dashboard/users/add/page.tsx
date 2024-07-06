@@ -3,7 +3,6 @@ import style from "@/app/ui/dashboard/users/addUser/addUser.module.css";
 import { addUser } from "@/app/lib/actions";
 
 
-
 const AddUserPage = () => {
   return (
     <div className={style.container}>

@@ -4,7 +4,6 @@ import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import GoogleProvider from 'next-auth/providers/google'
 import Credentials from "next-auth/providers/credentials";
-import { GiCreditsCurrency } from "react-icons/gi";
 import { User } from "@/app/lib/userModel";
 import * as bcrypt from 'bcrypt'
 import { connection } from "@/app/lib/util";
@@ -23,14 +22,10 @@ export const authOptions: NextAuthOptions= {
             async authorize(credentials, req) {
       connection()
                 // we have to check wheater these two things exist, if not exist then return the null. 
-                if(!credentials?.email || !credentials?.password) {
-                    return null
-                }
+                if(!credentials?.email || !credentials?.password) return 
                
                 const user = await User.findOne({email : credentials?.email})
-                if(!user) {
-                    return null
-                }
+                if(!user) return
 console.log('this is user in the next route : ', user)
                 const passMatch = await bcrypt.compare(credentials?.password , user.password)
           console.log('pass Match ', passMatch)

@@ -16,6 +16,8 @@ export async function POST(request : NextRequest){
 
     console.log('this is teh server session ', session?.user?.email , session?.user?.name)
 
+    
+
  
     try {
     connection()

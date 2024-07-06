@@ -5,6 +5,7 @@ const TestPage = () => {
 
 
     const submitHandler =async ()=>{
+
    const res =  await axios.post('http://localhost:3000/api/users', { 
     username : "lmaooo",
     email:"Lmaoooo@gmail.com",
@@ -14,7 +15,6 @@ const TestPage = () => {
     isAdmin :false,
     isActive : true    
  })
-
  console.log('This is test response' , res)
 }
   return (<>

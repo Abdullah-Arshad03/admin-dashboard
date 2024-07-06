@@ -6,6 +6,7 @@ import { connection } from "./util";
 import { redirect } from "next/navigation";
 import * as bcrypt from "bcrypt";
 import { Product } from "./productModel";
+// import { User } from "next-auth";
 
 
 
